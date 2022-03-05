@@ -1,0 +1,15 @@
+version: '2'
+volumes:
+  home-ass-data:
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - home-ass-data:/config
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+    labels:
+      io.balena.features.supervisor-api: "1"
+      io.balena.features.balena-api: "1"
